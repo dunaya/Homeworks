@@ -14,6 +14,7 @@ public class MyArrayList implements SimpleList {
     public int size = 10;
     public MyArrayList() {
         int array[] = new int[size];
+        current_size = size;
     }
     public MyArrayList(int capacity) {
         int array[] = new int[capacity];
