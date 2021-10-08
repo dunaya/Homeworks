@@ -29,16 +29,19 @@ public class MyArrayList implements SimpleList {
     }
     @Override
     public int remove(int idx) throws NoSuchElementException {
-        if (idx >= current_size){
+        if (idx >= current_size || idx < 0){
             throw new NoSuchElementException("There is no such index");
         }
         else {
             int x = array[idx];
             int[] arrayTemp = new int[current_size - 1];
-            for (int i = 0; i <= current_size; i++) {
+            for (int i = 0; i <= current_size - 1; i++) {
                 if (i == idx) {
                     continue;
-                } else {
+                } else if(i >idx){
+                    arrayTemp[i - 1] = this.array[i];
+                }
+                else{
                     arrayTemp[i] = this.array[i];
                 }
             }
@@ -52,7 +55,7 @@ public class MyArrayList implements SimpleList {
     }
     @Override
     public int get(int idx) throws NoSuchElementException{
-        if (idx >= size){
+        if (idx >= size || idx < 0){
             throw new NoSuchElementException("There is no such index");
         }
         else {
