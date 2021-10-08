@@ -7,14 +7,14 @@ public interface SimpleList {
      * Добавить элемент в конец списка
      * @return
      */
-    int[] add(int item);
+    void add(int item);
     /**
      * удалить элемент по индексу idx, если такого индекса нет или
      он невалидный,
      * то бросить ошибку, если ок - вернуть удаленный элемент
      * @return
      */
-    int[] remove(int idx) throws NoSuchElementException;
+    int remove(int idx) throws NoSuchElementException;
     /**
      * Получить элемент с позиции idx или бросить исключение, если
      такого индекса нет

@@ -10,45 +10,53 @@ import java.util.NoSuchElementException;
  */
 public class MyArrayList implements SimpleList {
     public int array[];
-    public int current_size = this.array.length;
-    public int size;
-    int defaultSize = 10;
+    public int current_size;
+    public int size = 10;
     public MyArrayList() {
-        int array[] = new int[defaultSize];
+        int array[] = new int[size];
     }
     public MyArrayList(int capacity) {
         int array[] = new int[capacity];
     }
     @Override
-    public int[] add(int item) {
+    public void add(int item) {
         int[] arrayTemp = new int[current_size + 1];
         for (int i = 0; i <= current_size; i++){
             arrayTemp[i] = this.array[i];
         }
         arrayTemp[current_size] = item;
         this.array = arrayTemp;
-        return array;
     }
     @Override
-    public int[] remove(int idx) throws NoSuchElementException {
-        int[] arrayTemp = new int[current_size - 1];
-        for (int i = 0; i <= current_size; i++){
-            if (i == idx){
-                continue;
-            }
-            else{
-                arrayTemp[i] = this.array[i];
-            }
+    public int remove(int idx) throws NoSuchElementException {
+        if (idx >= current_size){
+            throw new NoSuchElementException("There is no such index");
         }
-        this.array = arrayTemp;
-        return array;
+        else {
+            int x = array[idx];
+            int[] arrayTemp = new int[current_size - 1];
+            for (int i = 0; i <= current_size; i++) {
+                if (i == idx) {
+                    continue;
+                } else {
+                    arrayTemp[i] = this.array[i];
+                }
+            }
+            this.array = arrayTemp;
+            return x;
+        }
     }
     @Override
     public int size() {
-        return this.array.length;
+        return current_size;
     }
     @Override
     public int get(int idx) throws NoSuchElementException{
-        return this.array[idx];
+        if (idx >= size){
+            throw new NoSuchElementException("There is no such index");
+        }
+        else {
+            return this.array[idx];
+        }
     }
 }
