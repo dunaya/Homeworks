@@ -35,7 +35,7 @@ public class MyArrayList implements SimpleList {
         else {
             int x = array[idx];
             int[] arrayTemp = new int[current_size - 1];
-            for (int i = 0; i <= current_size - 1; i++) {
+            for (int i = 0; i <= current_size; i++) {
                 if (i == idx) {
                     continue;
                 } else if(i >idx){
