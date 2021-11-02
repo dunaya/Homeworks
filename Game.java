@@ -27,10 +27,10 @@ public class Game
 
             while (!isWinnerFound)
             {
-                new Gamer(gamer1.getName(), gamer1.rating);
-                new Gamer(gamer2.getName(), gamer2.rating);
-                new Gamer(gamer3.getName(), gamer3.rating);
             }
+            gamer1.interrupt();
+            gamer2.interrupt();
+            gamer3.interrupt();
         }
     }
 
@@ -49,19 +49,16 @@ public class Game
         {
             try {
                 for (int i = 0; i <= 3; i++) {
-                    TimeUnit.MILLISECONDS.sleep(1000 / rating);
-                    if (OnlineGame.isWinnerFound){
-                        System.out.println(this.getName() + ": проиграл");
-                        break;
-                    }
-                    else if (i == 3){
+                    if (i == 3){
                         OnlineGame.isWinnerFound = true;
                         System.out.println(this.getName() + ": победитель!");
+                        break;
                     }
                     else System.out.println(this.getName() + ":" + OnlineGame.steps.get(i));
+                    TimeUnit.MILLISECONDS.sleep(1000 / rating);
                 }
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.out.println(this.getName() + ": проиграл");
             }
 
         }
